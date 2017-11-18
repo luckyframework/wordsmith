@@ -1,6 +1,6 @@
 require "./inflections"
 
-module LuckySupport
+module LuckyInflector
   module Inflector
     extend self
 

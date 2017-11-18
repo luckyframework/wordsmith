@@ -1,6 +1,6 @@
 require "./inflector/inflections"
 
-module LuckySupport
+module LuckyInflector
   Inflector.inflections.plural(/$/, "s")
   Inflector.inflections.plural(/s$/i, "s")
   Inflector.inflections.plural(/^(ax|test)is$/i, "\\1es")
