@@ -35,3 +35,7 @@ To run the tests:
 
 - [paulcsmith](https://github.com/paulcsmith) Paul Smith - creator, maintainer
 - [actsasflinn](https://github.com/actsasflinn) Flinn Mueller - contributor
+
+## Thanks & attributions
+
+* Inflector is based on [Rails](https://github.com/rails/rails). Thank you to the Rails team!
