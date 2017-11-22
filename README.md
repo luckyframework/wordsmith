@@ -9,7 +9,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   lucky_inflector:
-    github: luckyframework/inflector
+    github: luckyframework/lucky_inflector
 ```
 
 ## Usage
