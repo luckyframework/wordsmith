@@ -16,6 +16,9 @@ dependencies:
 
 ```crystal
 require "lucky_inflector"
+
+LuckyInflector::Inflector.pluralize("word") # "words"
+LuckyInflector::Inflector.singularize("categories") # "category"
 ```
 
 ## Contributing
