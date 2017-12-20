@@ -14,12 +14,18 @@ module LuckyInflector
 
     def camelize(term, uppercase_first_letter = true)
       string = term.to_s
-      if uppercase_first_letter
-        string = string.sub(/^[a-z\d]*/) { |match| inflections.acronyms[match]? || match.capitalize }
-      else
-        string = string.sub(/^(?:#{inflections.acronym_regex}(?=\b|[A-Z_])|\w)/) { |match| match.downcase }
+      string = if uppercase_first_letter
+                 string.sub(/^[a-z\d]*/) do |match|
+                   inflections.acronyms[match]? || match.capitalize
+                 end
+               else
+                 string.sub(/^(?:#{inflections.acronym_regex}(?=\b|[A-Z_])|\w)/) do |match|
+                   match.downcase
+                 end
+               end
+      string = string.gsub(/(?:_|(\/))([a-z\d]*)/i) do |_string, match|
+        "#{match[1]?}#{inflections.acronyms[match[2]]? || match[2].capitalize}"
       end
-      string = string.gsub(/(?:_|(\/))([a-z\d]*)/i) { "#{$1?}#{inflections.acronyms[$2]? || $2.capitalize}" }
       string = string.gsub("/", "::")
       string
     end
@@ -27,7 +33,9 @@ module LuckyInflector
     def underscore(camel_cased_word)
       return camel_cased_word unless camel_cased_word =~ /[A-Z-]|::/
       word = camel_cased_word.to_s.gsub("::", "/")
-      word = word.gsub(/(?:(?<=([A-Za-z\d]))|\b)(#{inflections.acronym_regex})(?=\b|[^a-z])/) { "#{$1? && "_" }#{$2.downcase}" }
+      word = word.gsub(/(?:(?<=([A-Za-z\d]))|\b)(#{inflections.acronym_regex})(?=\b|[^a-z])/) do |_string, match|
+        "#{match[1]? && "_"}#{match[2].downcase}"
+      end
       word = word.gsub(/([A-Z\d]+)([A-Z][a-z])/, "\\1_\\2")
       word = word.gsub(/([a-z\d])([A-Z])/, "\\1_\\2")
       word = word.tr("-", "_")
@@ -38,7 +46,7 @@ module LuckyInflector
     def humanize(lower_case_and_underscored_word, capitalize = true, keep_id_suffix = false)
       result = lower_case_and_underscored_word.to_s.dup
 
-      inflections.humans.each { |rule, replacement| 
+      inflections.humans.each { |rule, replacement|
         if result.index(rule)
           result = result.sub(rule, replacement)
           break
