@@ -1,4 +1,4 @@
-module LuckyInflector
+module Wordsmith
   module Inflector
     extend self
 
