@@ -3,14 +3,16 @@ module Wordsmith
     extend self
 
     class Inflections
-      class Uncountables < Array(String)
+      class Uncountables
+        forward_missing_to @uncoundtables_array
+
         def initialize
           @regex_array = Array(Regex).new
-          super
+          @uncoundtables_array = [] of String
         end
 
         def delete(entry)
-          super entry
+          @uncoundtables_array.delete entry
           @regex_array.delete(to_regex(entry))
         end
 
