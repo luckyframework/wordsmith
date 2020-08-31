@@ -5,6 +5,6 @@ authors:
   - Paul Smith <paulcsmith0218@gmail.com>
   - Flinn Mueller <theflinnster@gmail.com>
 
-crystal: 0.29.0
+crystal: 0.35.1
 
 license: MIT
