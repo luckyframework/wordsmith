@@ -21,11 +21,19 @@ require "wordsmith"
 
 Wordsmith::Inflector.pluralize("word") # "words"
 Wordsmith::Inflector.singularize("categories") # "category"
+Wordsmith::Inflector.camelize("application_controller") # "ApplicationController"
+Wordsmith::Inflector.underscore("CheeseBurger") # "cheese_burger"
+Wordsmith::Inflector.humanize("employee_id") # "Employee"
+Wordsmith::Inflector.titleize("amazon web services") # "Amazon Web Services"
+Wordsmith::Inflector.tableize("User") # "users"
+Wordsmith::Inflector.classify("users") # "User"
+Wordsmith::Inflector.dasherize("PostOffice") # "post-office"
+Wordsmith::Inflector.ordinalize(4) # "4th"
 ```
 
 ## Contributing
 
-1. Fork it ( https://github.com/crystal-loot/wordsmith/fork )
+1. Fork it ( https://github.com/luckyframework/wordsmith/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Make your changes
 4. Run `./bin/test` to run the specs, build shards, and check formatting
@@ -37,7 +45,7 @@ Wordsmith::Inflector.singularize("categories") # "category"
 
 To run the tests:
 
-- Run the tests with `crystal spec`
+- Run the tests with `./bin/test`
 
 ## Contributors
 
