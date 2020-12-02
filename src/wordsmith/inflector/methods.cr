@@ -134,11 +134,11 @@ module Wordsmith
 
       unless separator.nil? || separator.empty?
         if separator == "-"
-          re_duplicate_separator        = /-{2,}/
+          re_duplicate_separator = /-{2,}/
           re_leading_trailing_separator = /^-|-$/i
         else
           re_sep = Regex.escape(separator)
-          re_duplicate_separator        = /#{re_sep}{2,}/
+          re_duplicate_separator = /#{re_sep}{2,}/
           re_leading_trailing_separator = /^#{re_sep}|#{re_sep}$/i
         end
         parameterized_string = parameterized_string.gsub(re_duplicate_separator, separator)
