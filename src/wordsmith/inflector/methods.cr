@@ -129,6 +129,26 @@ module Wordsmith
       "#{number}#{ordinal(number)}"
     end
 
+    def parameterize(content : String, separator : String? = "-", preserve_case : Bool = false)
+      parameterized_string = content.gsub(/[^a-z0-9\-_]+/i, separator)
+
+      unless separator.nil? || separator.empty?
+        if separator == "-"
+          re_duplicate_separator        = /-{2,}/
+          re_leading_trailing_separator = /^-|-$/i
+        else
+          re_sep = Regex.escape(separator)
+          re_duplicate_separator        = /#{re_sep}{2,}/
+          re_leading_trailing_separator = /^#{re_sep}|#{re_sep}$/i
+        end
+        parameterized_string = parameterized_string.gsub(re_duplicate_separator, separator)
+        parameterized_string = parameterized_string.gsub(re_leading_trailing_separator, "")
+      end
+
+      parameterized_string = parameterized_string.downcase unless preserve_case
+      parameterized_string
+    end
+
     private def apply_inflections(word, rules)
       result = word.to_s.dup
 
