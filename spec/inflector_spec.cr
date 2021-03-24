@@ -240,6 +240,21 @@ describe Wordsmith::Inflector do
     end
   end
 
+  describe "parameterize" do
+    MixtureToParametize.each do |before, parameterized|
+      it "should parameterize #{before}" do
+        Wordsmith::Inflector.parameterize(before).should eq parameterized
+      end
+    end
+
+    MixtureToParametizeWithUnderscore.each do |before, parameterized|
+      it "should parameterize #{before} with options" do
+        Wordsmith::Inflector.parameterize(before, "_", true).should eq parameterized
+        Wordsmith::Inflector.parameterize(before, "_").should eq parameterized.downcase
+      end
+    end
+  end
+
   describe "irregularities" do
     Irregularities.each do |singular, plural|
       it "should handle irregularity between #{singular} and #{plural}" do

@@ -292,4 +292,22 @@ module InflectorTestCases
     "zombie" => "zombies",
     "genus"  => "genera",
   }
+
+  MixtureToParametize = {
+    "Product"              => "product",
+    "PrimarySpokesman"     => "primaryspokesman",
+    "special_guest"        => "special_guest",
+    "Admin::Product"       => "admin-product",
+    "admin/product"        => "admin-product",
+    "this was 'fake news'" => "this-was-fake-news",
+    "david's Code"         => "david-s-code",
+  }
+
+  MixtureToParametizeWithUnderscore = {
+    "special_guest"        => "special_guest",
+    "Admin::Product"       => "Admin_Product",
+    "this was 'Fake News'" => "this_was_Fake_News",
+    "Admin/Product"        => "Admin_Product",
+    "david's Code"         => "david_s_Code",
+  }
 end
