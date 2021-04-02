@@ -19,7 +19,7 @@ describe Wordsmith::Inflector do
       Wordsmith::Inflector.pluralize("").should eq ""
     end
 
-    SingularToPlural.each do |singular, plural|
+    SingularToPlural.each do |_singular, plural|
       it "should pluralize #{plural}" do
         Wordsmith::Inflector.pluralize(plural).should eq plural
         Wordsmith::Inflector.pluralize(plural.capitalize).should eq plural.capitalize
@@ -35,7 +35,7 @@ describe Wordsmith::Inflector do
       end
     end
 
-    SingularToPlural.each do |singular, plural|
+    SingularToPlural.each do |singular, _plural|
       it "should singularize #{singular}" do
         Wordsmith::Inflector.singularize(singular).should eq singular
         Wordsmith::Inflector.singularize(singular.capitalize).should eq singular.capitalize

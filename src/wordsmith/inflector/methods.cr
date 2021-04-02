@@ -64,7 +64,7 @@ module Wordsmith
       end
 
       if capitalize
-        result = result.sub(/\A\w/) { |match| match.upcase }
+        result = result.sub(/\A\w/, &.upcase)
       end
 
       result
