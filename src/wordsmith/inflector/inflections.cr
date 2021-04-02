@@ -21,14 +21,14 @@ module Wordsmith
         end
 
         def add(words)
-          words = words.to_a.flatten.map { |word| word.downcase }
+          words = words.to_a.flatten.map(&.downcase)
           concat(words)
           @regex_array += words.map { |word| to_regex(word) }
           self
         end
 
         def uncountable?(str)
-          @regex_array.any? { |regex| regex.match(str) }
+          @regex_array.any?(&.match(str))
         end
 
         private def to_regex(string)
@@ -113,8 +113,8 @@ module Wordsmith
       def clear(scope = :all)
         scopes = scope == :all ? [:plurals, :singulars, :uncountables, :humans] : [scope]
 
-        scopes.each do |scope|
-          case scope
+        scopes.each do |s|
+          case s
           when :plurals
             @plurals = Hash(Regex, String).new
           when :singulars
