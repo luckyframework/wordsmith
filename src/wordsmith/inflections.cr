@@ -51,6 +51,7 @@ module Wordsmith
   Inflector.inflections.singular(/(quiz)zes$/i, "\\1")
   Inflector.inflections.singular(/(database)s$/i, "\\1")
 
+  Inflector.inflections.irregular("human", "humans")
   Inflector.inflections.irregular("person", "people")
   Inflector.inflections.irregular("man", "men")
   Inflector.inflections.irregular("child", "children")
