@@ -59,5 +59,5 @@ module Wordsmith
   Inflector.inflections.irregular("move", "moves")
   Inflector.inflections.irregular("zombie", "zombies")
 
-  Inflector.inflections.uncountable(%w(equipment information rice money species series fish sheep jeans police))
+  Inflector.inflections.uncountable(%w(equipment information rice money species series fish sheep jeans police staff))
 end
