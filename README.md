@@ -33,6 +33,21 @@ Wordsmith::Inflector.dasherize("PostOffice") # "post-office"
 Wordsmith::Inflector.ordinalize(4) # "4th"
 ```
 
+## Custom inflections
+
+If something isn't pluralizing correctly, it's easy to customize.
+
+```crystal
+# Place this in a config file like `config/inflectors.cr`
+require "wordsmith"
+
+# To pluralize a single string in a specific way
+Wordsmith::Inflector.inflections.irregular("human", "humans")
+
+# To stop Wordsmith from pluralizing a word altogether
+Wordsmith::Inflector.inflections.uncountable("equipment")
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/luckyframework/wordsmith/fork )
