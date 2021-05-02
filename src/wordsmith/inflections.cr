@@ -51,13 +51,13 @@ module Wordsmith
   Inflector.inflections.singular(/(quiz)zes$/i, "\\1")
   Inflector.inflections.singular(/(database)s$/i, "\\1")
 
-  Inflector.inflections.irregular("human", "humans")
   Inflector.inflections.irregular("person", "people")
   Inflector.inflections.irregular("man", "men")
+  Inflector.inflections.irregular("human", "humans")
   Inflector.inflections.irregular("child", "children")
   Inflector.inflections.irregular("sex", "sexes")
   Inflector.inflections.irregular("move", "moves")
   Inflector.inflections.irregular("zombie", "zombies")
 
-  Inflector.inflections.uncountable(%w(equipment information rice money species series fish sheep jeans police staff))
+  Inflector.inflections.uncountable(%w(equipment information rice money species series fish sheep jeans police))
 end
