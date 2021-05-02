@@ -29,8 +29,12 @@ Wordsmith::Inflector.humanize("employee_id") # "Employee"
 Wordsmith::Inflector.titleize("amazon web services") # "Amazon Web Services"
 Wordsmith::Inflector.tableize("User") # "users"
 Wordsmith::Inflector.classify("users") # "User"
-Wordsmith::Inflector.dasherize("PostOffice") # "post-office"
+Wordsmith::Inflector.dasherize("post_office") # "post-office"
 Wordsmith::Inflector.ordinalize(4) # "4th"
+Wordsmith::Inflector.demodulize("Helpers::Mixins::User") # "User"
+Wordsmith::Inflector.deconstantize("User::FREE_TIER_COMMENTS") # "User"
+Wordsmith::Inflector.foreign_key("Person") # "person_id"
+Wordsmith::Inflector.parameterize("Admin/product") # "admin-product"
 ```
 
 ## Contributing

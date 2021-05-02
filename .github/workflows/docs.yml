@@ -2,7 +2,7 @@ name: Deploy docs
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: "Install shards"
         run: shards install
       - name: "Generate docs"
-        run: crystal docs
+        run: crystal docs --project-name=Wordsmith
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
