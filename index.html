@@ -5,15 +5,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.36.1">
 <meta name="crystal_docs.project_version" content="0.2.2">
-<meta name="crystal_docs.project_name" content="wordsmith">
+<meta name="crystal_docs.project_name" content="Wordsmith">
 
 
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/doc.js"></script>
 
-  <meta name="repository-name" content="wordsmith">
-  <title>wordsmith 0.2.2</title>
+  <meta name="repository-name" content="Wordsmith">
+  <title>Wordsmith 0.2.2</title>
   <script type="text/javascript">
   CrystalDocs.base_path = "";
   </script>
@@ -34,7 +34,7 @@
     <div class="project-summary">
       <h1 class="project-name">
         <a href="index.html">
-          wordsmith
+          Wordsmith
         </a>
       </h1>
 
@@ -51,22 +51,22 @@
   <div class="types-list">
     <ul>
   
-  <li class="parent " data-id="wordsmith/Wordsmith" data-name="wordsmith">
+  <li class="parent " data-id="Wordsmith/Wordsmith" data-name="wordsmith">
       <a href="Wordsmith.html">Wordsmith</a>
       
         <ul>
   
-  <li class="parent " data-id="wordsmith/Wordsmith/Inflector" data-name="wordsmith::inflector">
+  <li class="parent " data-id="Wordsmith/Wordsmith/Inflector" data-name="wordsmith::inflector">
       <a href="Wordsmith/Inflector.html">Inflector</a>
       
         <ul>
   
-  <li class="parent " data-id="wordsmith/Wordsmith/Inflector/Inflections" data-name="wordsmith::inflector::inflections">
+  <li class="parent " data-id="Wordsmith/Wordsmith/Inflector/Inflections" data-name="wordsmith::inflector::inflections">
       <a href="Wordsmith/Inflector/Inflections.html">Inflections</a>
       
         <ul>
   
-  <li class=" " data-id="wordsmith/Wordsmith/Inflector/Inflections/Uncountables" data-name="wordsmith::inflector::inflections::uncountables">
+  <li class=" " data-id="Wordsmith/Wordsmith/Inflector/Inflections/Uncountables" data-name="wordsmith::inflector::inflections::uncountables">
       <a href="Wordsmith/Inflector/Inflections/Uncountables.html">Uncountables</a>
       
     </li>
@@ -133,8 +133,12 @@ other fun and useful things with words.</p>
 <span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.titleize(<span class="s">&quot;amazon web services&quot;</span>) <span class="c"># &quot;Amazon Web Services&quot;</span>
 <span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.tableize(<span class="s">&quot;User&quot;</span>) <span class="c"># &quot;users&quot;</span>
 <span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.classify(<span class="s">&quot;users&quot;</span>) <span class="c"># &quot;User&quot;</span>
-<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.dasherize(<span class="s">&quot;PostOffice&quot;</span>) <span class="c"># &quot;post-office&quot;</span>
-<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinalize(<span class="n">4</span>) <span class="c"># &quot;4th&quot;</span></code></pre>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.dasherize(<span class="s">&quot;post_office&quot;</span>) <span class="c"># &quot;post-office&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinalize(<span class="n">4</span>) <span class="c"># &quot;4th&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.demodulize(<span class="s">&quot;Helpers::Mixins::User&quot;</span>) <span class="c"># &quot;User&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.deconstantize(<span class="s">&quot;User::FREE_TIER_COMMENTS&quot;</span>) <span class="c"># &quot;User&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.foreign_key(<span class="s">&quot;Person&quot;</span>) <span class="c"># &quot;person_id&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.parameterize(<span class="s">&quot;Admin/product&quot;</span>) <span class="c"># &quot;admin-product&quot;</span></code></pre>
 
 <h2><a id="custom-inflections" class="anchor" href="#custom-inflections">
   <svg class="octicon-link" aria-hidden="true">
