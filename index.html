@@ -136,6 +136,23 @@ other fun and useful things with words.</p>
 <span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.dasherize(<span class="s">&quot;PostOffice&quot;</span>) <span class="c"># &quot;post-office&quot;</span>
 <span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinalize(<span class="n">4</span>) <span class="c"># &quot;4th&quot;</span></code></pre>
 
+<h2><a id="custom-inflections" class="anchor" href="#custom-inflections">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Custom inflections</h2>
+
+<p>If something isn't pluralizing correctly, it's easy to customize.</p>
+
+<pre><code class="language-crystal"><span class="c"># Place this in a config file like `config/inflectors.cr`</span>
+<span class="k">require</span> <span class="s">&quot;wordsmith&quot;</span>
+
+<span class="c"># To pluralize a single string in a specific way</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.inflections.irregular(<span class="s">&quot;human&quot;</span>, <span class="s">&quot;humans&quot;</span>)
+
+<span class="c"># To stop Wordsmith from pluralizing a word altogether</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.inflections.uncountable(<span class="s">&quot;equipment&quot;</span>)</code></pre>
+
 <h2><a id="contributing" class="anchor" href="#contributing">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
