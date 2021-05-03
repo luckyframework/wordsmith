@@ -53,6 +53,7 @@ module Wordsmith
 
   Inflector.inflections.irregular("person", "people")
   Inflector.inflections.irregular("man", "men")
+  Inflector.inflections.irregular("human", "humans")
   Inflector.inflections.irregular("child", "children")
   Inflector.inflections.irregular("sex", "sexes")
   Inflector.inflections.irregular("move", "moves")

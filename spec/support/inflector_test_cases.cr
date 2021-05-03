@@ -36,6 +36,7 @@ module InflectorTestCases
     "spokesman" => "spokesmen",
     "man"       => "men",
     "woman"     => "women",
+    "human"     => "humans",
 
     "basis"       => "bases",
     "diagnosis"   => "diagnoses",
