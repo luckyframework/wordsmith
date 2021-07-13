@@ -115,7 +115,7 @@ module Wordsmith
         end
         @uncountables.delete(replacement)
         new_plural = {rule => replacement}
-        @plurals = new_plural.merge(@plurals)
+        @plurals = @plurals.merge(new_plural)
       end
 
       # Define a new singularization rule, either using a pattern or string.
@@ -138,7 +138,7 @@ module Wordsmith
         end
         @uncountables.delete(replacement)
         new_singular = {rule => replacement}
-        @singulars = new_singular.merge(@singulars)
+        @singulars = @singulars.merge(new_singular)
       end
 
       # Define a new irregular `String` with a direct translation between singular and plural form.
