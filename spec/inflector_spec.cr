@@ -32,6 +32,7 @@ describe Wordsmith::Inflector do
     end
 
     it "is overwriteable" do
+      Wordsmith::Inflector.inflections.plural("person", "people")
       Wordsmith::Inflector.inflections.plural("person", "persons")
       Wordsmith::Inflector.pluralize("person").should eq("persons")
     end
