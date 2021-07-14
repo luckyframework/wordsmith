@@ -7,6 +7,11 @@ require "./support/inflector_test_cases"
 include InflectorTestCases
 
 describe Wordsmith::Inflector do
+  before_each do
+    Wordsmith::Inflector.inflections.clear
+    Wordsmith.load
+  end
+
   describe "pluralize" do
     SingularToPlural.each do |singular, plural|
       it "should pluralize #{singular}" do
@@ -25,6 +30,12 @@ describe Wordsmith::Inflector do
         Wordsmith::Inflector.pluralize(plural.capitalize).should eq plural.capitalize
       end
     end
+
+    it "is overwriteable" do
+      Wordsmith::Inflector.inflections.plural("person", "people")
+      Wordsmith::Inflector.inflections.plural("person", "persons")
+      Wordsmith::Inflector.pluralize("person").should eq("persons")
+    end
   end
 
   describe "singular" do
@@ -40,6 +51,11 @@ describe Wordsmith::Inflector do
         Wordsmith::Inflector.singularize(singular).should eq singular
         Wordsmith::Inflector.singularize(singular.capitalize).should eq singular.capitalize
       end
+    end
+
+    it "is overwriteable" do
+      Wordsmith::Inflector.inflections.singular("persons", "person")
+      Wordsmith::Inflector.singularize("persons").should eq("person")
     end
   end
 
@@ -276,6 +292,11 @@ describe Wordsmith::Inflector do
         Wordsmith::Inflector.inflections.irregular(singular, plural)
         Wordsmith::Inflector.singularize(singular).should eq singular
       end
+    end
+
+    it "is overwriteable" do
+      Wordsmith::Inflector.inflections.irregular("person", "persons")
+      Wordsmith::Inflector.pluralize("person").should eq("persons")
     end
   end
 

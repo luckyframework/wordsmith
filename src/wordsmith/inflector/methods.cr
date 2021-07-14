@@ -277,7 +277,7 @@ module Wordsmith
       if result.empty? || inflections.uncountables.uncountable?(result)
         result
       else
-        rules.each { |rule, replacement|
+        rules.to_a.reverse.each { |rule, replacement|
           if result.index(rule)
             result = result.sub(rule, replacement)
             break
