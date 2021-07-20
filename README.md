@@ -13,7 +13,6 @@ Add this to your application's `shard.yml`:
 dependencies:
   wordsmith:
     github: luckyframework/wordsmith
-    version: ~> 0.2
 ```
 
 ## Usage
