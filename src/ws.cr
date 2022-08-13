@@ -2,9 +2,7 @@ require "option_parser"
 require "colorize"
 require "./wordsmith"
 
-is_pipe = `test -p /proc/$$/fd/0; echo $?`.chomp == "0"
-
-if is_pipe
+if STDIN.info.type.pipe?
   ARGV << STDIN.gets.not_nil!
 else
   ARGV << "--help" if ARGV.empty?
