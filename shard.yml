@@ -5,6 +5,10 @@ authors:
   - Paul Smith <paulcsmith0218@gmail.com>
   - Flinn Mueller <theflinnster@gmail.com>
 
+targets:
+  ws:
+    main: src/ws.cr
+
 crystal: ">= 1.4.0"
 
 license: MIT
