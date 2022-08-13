@@ -29,11 +29,6 @@ more examples, check https://github.com/luckyframework/wordsmith#usage
 
 USAGE
 
-  parser.missing_option do |flag|
-    STDERR.puts parser
-    exit 0
-  end
-
   parser.on(
     "-s WORD",
     "--singularize=WORD",
