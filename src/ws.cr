@@ -25,6 +25,10 @@ some examples:
 $: #{"ws -s people".colorize(:light_yellow)} # => person
 $: #{"ws -p person".colorize(:light_yellow)} # => people
 
+You can use it with pipe:
+
+$: #{"echo \"WordSmith\" |ws -u".colorize(:light_yellow)} # => word_smith
+
 more examples, check https://github.com/luckyframework/wordsmith#usage
 
 USAGE
