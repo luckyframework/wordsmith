@@ -39,13 +39,17 @@ Wordsmith::Inflector.parameterize("Admin/product") # "admin-product"
 Wordsmith comes with a `ws` CLI utility which allows you to process words from the command line. You can download it directly from the [releases page](https://github.com/luckyframework/wordsmith/releases).
 
 ```sh
+ ╰─ $ ./ws 
 Usage: ws <option> WORD
 
 Wordsmith is a library for pluralizing, singularizing and doing
 other fun and useful things with words.
 
 Command `ws` is the command line version of Wordsmith, not all
-features of Wordsmith are implemented.
+features of Wordsmith are implemented, for precompiled binary,
+please download from github releases page.
+
+https://github.com/luckyframework/wordsmith/releases
 
 some examples:
 
@@ -54,9 +58,9 @@ $: ws -p person # => people
 
 You can use it with pipe:
 
-$: echo "WordSmith" |ws -u # => word_smith
+$: echo "WordSmith" |ws -u |ws -d # => word-smith
 
-more examples, check https://github.com/luckyframework/wordsmith#usage
+more examples, please check https://github.com/luckyframework/wordsmith#usage
 
     -s WORD, --singularize=WORD      Return the singular version of the word.
     -p WORD, --pluralize=WORD        Return the plural version of the word.

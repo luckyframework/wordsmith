@@ -16,7 +16,10 @@ Wordsmith is a library for pluralizing, singularizing and doing
 other fun and useful things with words.
 
 Command `ws` is the command line version of Wordsmith, not all
-features of Wordsmith are implemented.
+features of Wordsmith are implemented, for precompiled binary,
+please download from github releases page.
+
+https://github.com/luckyframework/wordsmith/releases
 
 some examples:
 
@@ -25,9 +28,9 @@ $: #{"ws -p person".colorize(:light_yellow)} # => people
 
 You can use it with pipe:
 
-$: #{"echo \"WordSmith\" |ws -u".colorize(:light_yellow)} # => word_smith
+$: #{"echo \"WordSmith\" |ws -u |ws -d".colorize(:light_yellow)} # => word-smith
 
-more examples, check https://github.com/luckyframework/wordsmith#usage
+more examples, please check https://github.com/luckyframework/wordsmith#usage
 
 USAGE
 
