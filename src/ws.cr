@@ -16,7 +16,7 @@ Wordsmith is a library for pluralizing, singularizing and doing
 other fun and useful things with words.
 
 Command `ws` is the command line version of Wordsmith, not all
-feature of Wordsmith is implemented.
+features of Wordsmith are implemented.
 
 some examples:
 
