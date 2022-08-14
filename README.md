@@ -36,7 +36,7 @@ Wordsmith::Inflector.foreign_key("Person") # "person_id"
 Wordsmith::Inflector.parameterize("Admin/product") # "admin-product"
 ```
 
-Wordsmith along with a `ws `command for works on command line, you can download it directly from [releases page](https://github.com/luckyframework/wordsmith/releases).
+Wordsmith comes with a `ws` CLI utility which allows you to process words from the command line. You can download it directly from the [releases page](https://github.com/luckyframework/wordsmith/releases).
 
 ```sh
 Usage: ws <option> WORD
