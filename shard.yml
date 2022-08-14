@@ -1,9 +1,10 @@
 name: wordsmith
-version: 0.3.0
+version: 0.3.2
 
 authors:
   - Paul Smith <paulcsmith0218@gmail.com>
   - Flinn Mueller <theflinnster@gmail.com>
+  - Billy.Zheng <vil963@gmail.com>
 
 targets:
   ws:
