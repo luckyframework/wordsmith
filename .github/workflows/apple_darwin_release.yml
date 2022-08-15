@@ -22,7 +22,7 @@ jobs:
       - name: Check formatting
         run: crystal tool format --check
       - name: Run tests
-        run: KEMAL_ENV=test crystal spec --order=random --error-on-warnings
+        run: crystal spec --order=random --error-on-warnings
       - name: package information
         run: |
           echo "BINARY_NAME=ws" >> $GITHUB_ENV
