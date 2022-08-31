@@ -36,6 +36,42 @@ Wordsmith::Inflector.foreign_key("Person") # "person_id"
 Wordsmith::Inflector.parameterize("Admin/product") # "admin-product"
 ```
 
+Wordsmith comes with a `ws` CLI utility which allows you to process words from the command line. You can download it directly from the [releases page](https://github.com/luckyframework/wordsmith/releases).
+
+```sh
+ ╰─ $ ./ws 
+Usage: ws <option> WORD
+
+Wordsmith is a library for pluralizing, singularizing and doing
+other fun and useful things with words.
+
+Command `ws` is the command line version of Wordsmith, not all
+features of Wordsmith are implemented, for precompiled binary,
+please download from github releases page.
+
+https://github.com/luckyframework/wordsmith/releases
+
+some examples:
+
+$: ws -s people # => person
+$: ws -p person # => people
+
+You can use it with pipe:
+
+$: echo "WordSmith" |ws -u |ws -d # => word-smith
+
+more examples, please check https://github.com/luckyframework/wordsmith#usage
+
+    -s WORD, --singularize=WORD      Return the singular version of the word.
+    -p WORD, --pluralize=WORD        Return the plural version of the word.
+    -c WORD, --camelize=WORD         Return the camel-case version of that word.
+    -C WORD, --camelize-downcase=WORD
+                                     Return the camel-case version of that word, but the first letter not capitalized.
+    -u WORD, --underscore=WORD       Convert a given camel-case word to it's underscored version.
+    -d WORD, --dasherize=WORD        Convert a given underscore-separated word to the same word, separated by dashes.
+    -h, --help                       Show this help
+```
+
 ## Custom inflections
 
 If something isn't pluralizing correctly, it's easy to customize.

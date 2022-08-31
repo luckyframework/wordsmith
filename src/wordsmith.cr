@@ -1,5 +1,4 @@
 require "./wordsmith/**"
-require "./wordsmith/inflector/**"
 
 # Wordsmith is a library for pluralizing, ordinalizing, singularizing and doing other fun and useful things with words.
 module Wordsmith

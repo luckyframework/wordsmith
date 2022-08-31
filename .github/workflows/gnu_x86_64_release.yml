@@ -1,0 +1,43 @@
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache shards
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/shards
+          key: ${{ runner.os }}-shards-${{ hashFiles('shard.yml') }}
+          restore-keys: ${{ runner.os }}-shards-
+      - name: Download source
+        uses: actions/checkout@v2
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
+      - name: Install shards
+        run: shards check || shards install
+      - name: Check formatting
+        run: crystal tool format --check
+      - name: Run tests
+        run: crystal spec --order=random --error-on-warnings
+      - name: package information
+        run: |
+          echo "BINARY_NAME=ws" >> $GITHUB_ENV
+          echo "PKG_ARCH=x86_64" >> $GITHUB_ENV
+          echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: release binary
+        id: release
+        run: |
+          shards build --production --release --progress --static --no-debug --link-flags="-s -Wl,-z,relro,-z,now"
+          ASSERT_NAME=${BINARY_NAME}-${RELEASE_VERSION}-${PKG_ARCH}-unknown-linux-gnu.tar.gz
+          tar zcf ${ASSERT_NAME} bin/${BINARY_NAME} LICENSE
+          echo ::set-output name=ASSERT_NAME::${ASSERT_NAME}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ${{ steps.release.outputs.ASSERT_NAME }}
