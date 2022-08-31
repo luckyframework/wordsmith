@@ -87,6 +87,11 @@ USAGE
     exit
   end
 
+  parser.on("-v", "--version", "Show Wordsmith version") do
+    puts Wordsmith::VERSION
+    exit
+  end
+
   parser.invalid_option do |flag|
     STDERR.puts "ERROR: #{flag} is not a valid option.\n\n"
     STDERR.puts parser
