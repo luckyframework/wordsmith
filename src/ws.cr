@@ -3,7 +3,7 @@ require "colorize"
 require "./wordsmith"
 
 if STDIN.info.type.pipe?
-  ARGV << STDIN.gets.not_nil!
+  ARGV << STDIN.gets.to_s
 else
   ARGV << "--help" if ARGV.empty?
 end
