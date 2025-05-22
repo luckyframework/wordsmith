@@ -12,7 +12,7 @@ module Wordsmith
     # Wordsmith::Inflector.pluralize("person") # => "people"
     # Wordsmith::Inflector.pluralize("people") # => "people"
     # ```
-    def pluralize(word)
+    def pluralize(word : String) : String
       apply_inflections(word, inflections.plurals)
     end
 
@@ -24,7 +24,7 @@ module Wordsmith
     # Wordsmith::Inflector.singularize("people")  # => "person"
     # Wordsmith::Inflector.singularize("person")  # => "person"
     # ```
-    def singularize(word)
+    def singularize(word : String) : String
       apply_inflections(word, inflections.singulars)
     end
 
@@ -37,7 +37,7 @@ module Wordsmith
     # Wordsmith::Inflector.camelize("application_controller")                                # => "ApplicationController"
     # Wordsmith::Inflector.camelize("application_controller", uppercase_first_letter: false) # => "applicationController"
     # ```
-    def camelize(term, uppercase_first_letter = true)
+    def camelize(term : String, uppercase_first_letter : Bool = true) : String
       string = term.to_s
       string = if uppercase_first_letter
                  string.sub(/^[a-z\d]*/) do |match|
@@ -61,7 +61,7 @@ module Wordsmith
     # ```
     # Wordsmith::Inflector.underscore("ApplicationController") # => "application_controller"
     # ```
-    def underscore(camel_cased_word)
+    def underscore(camel_cased_word : String) : String
       return camel_cased_word unless camel_cased_word =~ /[A-Z-]|::/
       word = camel_cased_word.to_s.gsub("::", "/")
       word = word.gsub(/(?:(?<=([A-Za-z\d]))|\b)(#{inflections.acronym_regex})(?=\b|[^a-z])/) do |_string, match|
@@ -84,7 +84,7 @@ module Wordsmith
     # Wordsmith::Inflector.humanize("employee_id", capitalize: false)    # => "employee"
     # Wordsmith::Inflector.humanize("employee_id", keep_id_suffix: true) # => "Employee id"
     # ```
-    def humanize(lower_case_and_underscored_word, capitalize = true, keep_id_suffix = false)
+    def humanize(lower_case_and_underscored_word : String, capitalize : Bool = true, keep_id_suffix : Bool = false) : String
       result = lower_case_and_underscored_word.to_s.dup
 
       inflections.humans.each { |rule, replacement|
@@ -117,7 +117,7 @@ module Wordsmith
     # ```
     # Wordsmith::Inflector.upcase_first("lucky") # => "Lucky"
     # ```
-    def upcase_first(string)
+    def upcase_first(string : String) : String
       string.size > 0 ? string[0].to_s.upcase + string[1..-1] : ""
     end
 
@@ -127,7 +127,7 @@ module Wordsmith
     # ```
     # Wordsmith::Inflector.titleize("amazon web services") # => "Amazon Web Services"
     # ```
-    def titleize(word, keep_id_suffix = false)
+    def titleize(word : String, keep_id_suffix : Bool = false) : String
       humanize(underscore(word), keep_id_suffix: keep_id_suffix).gsub(/\b(?<!\w['’`])[a-z]/) do |match|
         match.capitalize
       end
@@ -140,7 +140,7 @@ module Wordsmith
     # Wordsmith::Inflector.tableize("User")   # => "users"
     # Wordsmith::Inflector.tableize("Person") # => "people"
     # ```
-    def tableize(class_name)
+    def tableize(class_name : String) : String
       pluralize(underscore(class_name))
     end
 
@@ -153,7 +153,7 @@ module Wordsmith
     # Wordsmith::Inflector.classify("schema.users")        # => "User"
     # Wordsmith::Inflector.classify("schema.public.users") # => "User"
     # ```
-    def classify(table_name)
+    def classify(table_name : String | Symbol) : String
       # strip out any leading schema name
       camelize(singularize(table_name.to_s.sub(/.*\./, "")))
     end
@@ -164,7 +164,7 @@ module Wordsmith
     # ```
     # Wordsmith::Inflector.dasherize("post_office") # => "post-office"
     # ```
-    def dasherize(underscored_word)
+    def dasherize(underscored_word : String) : String
       underscored_word.tr("_", "-")
     end
 
@@ -174,7 +174,7 @@ module Wordsmith
     # ```
     # Wordsmith::Inflector.demodulize("Helpers::Mixins::User") # => "User"
     # ```
-    def demodulize(path)
+    def demodulize(path : String) : String
       path = path.to_s
       if i = path.rindex("::")
         path[(i + 2)..-1]
@@ -189,7 +189,7 @@ module Wordsmith
     # ```
     # Wordsmith::Inflector.deconstantize("Helpers::Mixins::User::FREE_TIER_COMMENTS") # => "Helpers::Mixins::User"
     # ```
-    def deconstantize(path)
+    def deconstantize(path : String) : String
       path.to_s[0, path.rindex("::") || 0] # implementation based on the one in facets' Module#spacename
     end
 
@@ -199,7 +199,7 @@ module Wordsmith
     # ```
     # Wordsmith::Inflector.foreign_key("Person") # => "person_id"
     # ```
-    def foreign_key(class_name, separate_class_name_and_id_with_underscore = true)
+    def foreign_key(class_name : String, separate_class_name_and_id_with_underscore : Bool = true) : String
       underscore(demodulize(class_name)) + (separate_class_name_and_id_with_underscore ? "_id" : "id")
     end
 
@@ -212,7 +212,8 @@ module Wordsmith
     # Wordsmith::Inflector.ordinal(3) # => "rd"
     # Wordsmith::Inflector.ordinal(4) # => "th"
     # ```
-    def ordinal(number)
+    # TODO: This should only take an Int
+    def ordinal(number : Int | String) : String
       abs_number = number.to_i.abs
 
       if (11..13).includes?(abs_number % 100)
@@ -236,7 +237,8 @@ module Wordsmith
     # Wordsmith::Inflector.ordinalize(3) # => "3rd"
     # Wordsmith::Inflector.ordinalize(4) # => "4th"
     # ```
-    def ordinalize(number)
+    # TODO: This should only take an Int
+    def ordinalize(number : Int | String) : String
       "#{number}#{ordinal(number)}"
     end
 
@@ -250,7 +252,7 @@ module Wordsmith
     # Wordsmith::Inflector.parameterize("Admin::Product", separator: "_")      # => "admin_product"
     # Wordsmith::Inflector.parameterize("Admin::Product", preserve_case: true) # => "Admin-Product"
     # ```
-    def parameterize(content : String, separator : String? = "-", preserve_case : Bool = false)
+    def parameterize(content : String, separator : String? = "-", preserve_case : Bool = false) : String
       parameterized_string = content.gsub(/[^a-z0-9\-_]+/i, separator)
 
       unless separator.nil? || separator.empty?
@@ -271,7 +273,7 @@ module Wordsmith
     end
 
     # Apply the previously-defined inflection rules to a given word.
-    private def apply_inflections(word, rules)
+    private def apply_inflections(word : String, rules : Enumerable) : String
       result = word.to_s.dup
 
       if result.empty? || inflections.uncountables.uncountable?(result)

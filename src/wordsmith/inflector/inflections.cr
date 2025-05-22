@@ -6,7 +6,7 @@ module Wordsmith
     @@inflections = Inflections.new
 
     # Return the current set of stored inflection logic.
-    def inflections
+    def inflections : Inflections
       @@inflections
     end
 
@@ -23,13 +23,13 @@ module Wordsmith
         end
 
         # Remove an entry from the set of uncountable words and patterns.
-        def delete(entry)
+        def delete(entry) : Nil
           @uncoundtables_array.delete entry
           @regex_array.delete(to_regex(entry))
         end
 
         # Add an entry to the set of uncountable words and patterns.
-        def add(words)
+        def add(words : Enumerable) : self
           words = words.to_a.flatten.map(&.downcase)
           concat(words)
           @regex_array += words.map { |word| to_regex(word) }
@@ -37,38 +37,38 @@ module Wordsmith
         end
 
         # :ditto:
-        def <<(*word)
+        def <<(*word) : self
           add(word)
         end
 
         # Check whether or not a provided string is currently considered uncountable.
-        def uncountable?(str)
+        def uncountable?(str : String) : Bool
           @regex_array.any?(&.match(str))
         end
 
         # Convert a provided string to a regular expression.
-        private def to_regex(string)
+        private def to_regex(string : String) : Regex
           /\b#{::Regex.escape(string)}\Z/i
         end
       end
 
       # Return the current set of matched pluralization patterns.
-      getter :plurals
+      getter plurals : Hash(Regex, String)
 
       # Return the current set of matched singularization patterns.
-      getter :singulars
+      getter singulars : Hash(Regex, String)
 
       # Return the current set of items considered uncountable.
-      getter :uncountables
+      getter uncountables : Uncountables
 
       # Return the current set of items that can be humanized.
-      getter :humans
+      getter humans : Hash(Regex, String)
 
       # Return the current set of acronym strings to recognize.
-      getter :acronyms
+      getter acronyms : Hash(String, String)
 
       # Return the current set of acronym `Regex` patterns to recognize.
-      getter :acronym_regex
+      getter acronym_regex : Regex
 
       # Create a new object to store the collection of inflectable words and patterns.
       def initialize
@@ -90,7 +90,7 @@ module Wordsmith
       # Wordsmith::Inflector.humanize("API")   # => "API"
       # Wordsmith::Inflector.titleize("API")   # => "API"
       # ```
-      def acronym(word)
+      def acronym(word : String) : Nil
         @acronyms[word.downcase] = word
         @acronym_regex = /#{acronyms.values.join("|")}/
       end
@@ -108,7 +108,7 @@ module Wordsmith
       # Wordsmith::Inflector.inflections.plural("goosebumps", "geesebumps")
       # Wordsmith::Inflector.pluralize("goosebumps") # => "geesebumps"
       # ```
-      def plural(rule : String | Regex, replacement : String)
+      def plural(rule : String | Regex, replacement : String) : Nil
         if rule.is_a?(String)
           @uncountables.delete(rule)
           rule = /#{rule}/
@@ -131,7 +131,7 @@ module Wordsmith
       # Wordsmith::Inflector.inflections.singular("mice", "mouse")
       # Wordsmith::Inflector.singularize("mice") # => "mouse"
       # ```
-      def singular(rule : String | Regex, replacement : String)
+      def singular(rule : String | Regex, replacement : String) : Nil
         if rule.is_a?(String)
           @uncountables.delete(rule)
           rule = /#{rule}/
@@ -149,7 +149,7 @@ module Wordsmith
       # Wordsmith::Inflector.singularize("people") # => "person"
       # Wordsmith::Inflector.pluralize("person")   # => "people"
       # ```
-      def irregular(singular : String, plural : String)
+      def irregular(singular : String, plural : String) : Nil
         @uncountables.delete(singular)
         @uncountables.delete(plural)
 
@@ -193,7 +193,7 @@ module Wordsmith
       # Wordsmith::Inflector.singularize("jedi") # => "jedi"
       # Wordsmith::Inflector.pluralize("fish")   # => "fish"
       # ```
-      def uncountable(*words)
+      def uncountable(*words) : Uncountables
         @uncountables.add(words.to_a)
       end
 
@@ -210,7 +210,7 @@ module Wordsmith
       # Wordsmith::Inflector.inflections.human("col_rpted_bugs", "Reported bugs")
       # Wordsmith::Inflector.humanize("col_rpted_bugs") # => "Reported bugs"
       # ```
-      def human(rule : String | Regex, replacement : String)
+      def human(rule : String | Regex, replacement : String) : Nil
         rule = /#{rule}/ if rule.is_a?(String)
         @humans = {rule => replacement}.merge(@humans)
       end
@@ -223,7 +223,8 @@ module Wordsmith
       # * `:singulars`
       # * `:uncountables`
       # * `:humans`
-      def clear(scope = :all)
+      # TODO: This arg should be an enum
+      def clear(scope : Symbol = :all) : Nil
         scopes = scope == :all ? [:plurals, :singulars, :uncountables, :humans] : [scope]
 
         scopes.each do |s|
