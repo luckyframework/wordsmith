@@ -38,13 +38,12 @@ module Wordsmith
     # Wordsmith::Inflector.camelize("application_controller", uppercase_first_letter: false) # => "applicationController"
     # ```
     def camelize(term : String, uppercase_first_letter : Bool = true) : String
-      string = term.to_s
       string = if uppercase_first_letter
-                 string.sub(/^[a-z\d]*/) do |match|
+                 term.sub(/^[a-z\d]*/) do |match|
                    inflections.acronyms[match]? || match.capitalize
                  end
                else
-                 string.sub(/^(?:#{inflections.acronym_regex}(?=\b|[A-Z_])|\w)/) do |match|
+                 term.sub(/^(?:#{inflections.acronym_regex}(?=\b|[A-Z_])|\w)/) do |match|
                    match.downcase
                  end
                end
@@ -63,7 +62,7 @@ module Wordsmith
     # ```
     def underscore(camel_cased_word : String) : String
       return camel_cased_word unless camel_cased_word =~ /[A-Z-]|::/
-      word = camel_cased_word.to_s.gsub("::", "/")
+      word = camel_cased_word.gsub("::", "/")
       word = word.gsub(/(?:(?<=([A-Za-z\d]))|\b)(#{inflections.acronym_regex})(?=\b|[^a-z])/) do |_string, match|
         "#{match[1]? && "_"}#{match[2].downcase}"
       end
@@ -85,7 +84,7 @@ module Wordsmith
     # Wordsmith::Inflector.humanize("employee_id", keep_id_suffix: true) # => "Employee id"
     # ```
     def humanize(lower_case_and_underscored_word : String, capitalize : Bool = true, keep_id_suffix : Bool = false) : String
-      result = lower_case_and_underscored_word.to_s.dup
+      result = lower_case_and_underscored_word.dup
 
       inflections.humans.each { |rule, replacement|
         if result.index(rule)
@@ -118,7 +117,7 @@ module Wordsmith
     # Wordsmith::Inflector.upcase_first("lucky") # => "Lucky"
     # ```
     def upcase_first(string : String) : String
-      string.size > 0 ? string[0].to_s.upcase + string[1..-1] : ""
+      string.size > 0 ? string[0].upcase + string[1..-1] : ""
     end
 
     # Convert a given word to the titleized version of that word, which generally means each word is capitalized.
@@ -175,7 +174,6 @@ module Wordsmith
     # Wordsmith::Inflector.demodulize("Helpers::Mixins::User") # => "User"
     # ```
     def demodulize(path : String) : String
-      path = path.to_s
       if i = path.rindex("::")
         path[(i + 2)..-1]
       else
@@ -190,7 +188,7 @@ module Wordsmith
     # Wordsmith::Inflector.deconstantize("Helpers::Mixins::User::FREE_TIER_COMMENTS") # => "Helpers::Mixins::User"
     # ```
     def deconstantize(path : String) : String
-      path.to_s[0, path.rindex("::") || 0] # implementation based on the one in facets' Module#spacename
+      path[0, path.rindex("::") || 0] # implementation based on the one in facets' Module#spacename
     end
 
     # Determine the foreign key representation of a given class name.
@@ -274,7 +272,7 @@ module Wordsmith
 
     # Apply the previously-defined inflection rules to a given word.
     private def apply_inflections(word : String, rules : Enumerable) : String
-      result = word.to_s.dup
+      result = word.dup
 
       if result.empty? || inflections.uncountables.uncountable?(result)
         result
