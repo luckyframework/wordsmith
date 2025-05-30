@@ -150,14 +150,14 @@
   </h2>
   
     
-      <a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/inflections.cr#L2" target="_blank">
+      <a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/inflections.cr#L2" target="_blank">
         wordsmith/inflector/inflections.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L4" target="_blank">
+      <a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L4" target="_blank">
         wordsmith/inflector/methods.cr
       </a>
     
@@ -193,9 +193,30 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#camelize%28io%3AIO%2Cterm%3AString%2Cuppercase_first_letter%3ABool%3Dtrue%29%3ANil-instance-method" class="signature"><strong>#camelize</strong>(io : IO, term : String, uppercase_first_letter : Bool = <span class="n">true</span>) : Nil</a>
+        
+          <div class="summary"><p>Convert a given word to the camel-case version of that word.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#classify%28io%3AIO%2Ctable_name%3AString%7CSymbol%29%3ANil-instance-method" class="signature"><strong>#classify</strong>(io : IO, table_name : String | Symbol) : Nil</a>
+        
+          <div class="summary"><p>Convert a given table name to the class name for that table.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#classify%28table_name%3AString%7CSymbol%29%3AString-instance-method" class="signature"><strong>#classify</strong>(table_name : String | Symbol) : String</a>
         
           <div class="summary"><p>Convert a given table name to the class name for that table.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dasherize%28io%3AIO%2Cunderscored_word%3AString%29%3ANil-instance-method" class="signature"><strong>#dasherize</strong>(io : IO, underscored_word : String) : Nil</a>
+        
+          <div class="summary"><p>Convert a given underscore-separated word to the same word, separated by dashes.</p></div>
         
       </li>
     
@@ -207,9 +228,23 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#deconstantize%28io%3AIO%2Cpath%3AString%29%3ANil-instance-method" class="signature"><strong>#deconstantize</strong>(io : IO, path : String) : Nil</a>
+        
+          <div class="summary"><p>Remove any trailing constants from the provided path.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#deconstantize%28path%3AString%29%3AString-instance-method" class="signature"><strong>#deconstantize</strong>(path : String) : String</a>
         
           <div class="summary"><p>Remove any trailing constants from the provided path.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#demodulize%28io%3AIO%2Cpath%3AString%29%3ANil-instance-method" class="signature"><strong>#demodulize</strong>(io : IO, path : String) : Nil</a>
+        
+          <div class="summary"><p>Remove leading modules from a provided class name path.</p></div>
         
       </li>
     
@@ -228,7 +263,21 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#foreign_key%28io%3AIO%2Cclass_name%3AString%2Cseparate_class_name_and_id_with_underscore%3ABool%3Dtrue%29%3ANil-instance-method" class="signature"><strong>#foreign_key</strong>(io : IO, class_name : String, separate_class_name_and_id_with_underscore : Bool = <span class="n">true</span>) : Nil</a>
+        
+          <div class="summary"><p>Determine the foreign key representation of a given class name.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#humanize%28lower_case_and_underscored_word%3AString%2Ccapitalize%3ABool%3Dtrue%2Ckeep_id_suffix%3ABool%3Dfalse%29%3AString-instance-method" class="signature"><strong>#humanize</strong>(lower_case_and_underscored_word : String, capitalize : Bool = <span class="n">true</span>, keep_id_suffix : Bool = <span class="n">false</span>) : String</a>
+        
+          <div class="summary"><p>Convert a given word to the human-friendly version of that word.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#humanize%28io%3AIO%2Clower_case_and_underscored_word%3AString%2Ccapitalize%3ABool%3Dtrue%2Ckeep_id_suffix%3ABool%3Dfalse%29%3ANil-instance-method" class="signature"><strong>#humanize</strong>(io : IO, lower_case_and_underscored_word : String, capitalize : Bool = <span class="n">true</span>, keep_id_suffix : Bool = <span class="n">false</span>) : Nil</a>
         
           <div class="summary"><p>Convert a given word to the human-friendly version of that word.</p></div>
         
@@ -242,9 +291,23 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#ordinal%28io%3AIO%2Cnumber%3AInt%7CString%29%3ANil-instance-method" class="signature"><strong>#ordinal</strong>(io : IO, number : Int | String) : Nil</a>
+        
+          <div class="summary"><p>Determine the ordinal suffix for a given number.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#ordinal%28number%3AInt%7CString%29%3AString-instance-method" class="signature"><strong>#ordinal</strong>(number : Int | String) : String</a>
         
           <div class="summary"><p>Determine the ordinal suffix for a given number.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ordinalize%28io%3AIO%2Cnumber%3AInt%7CString%29%3ANil-instance-method" class="signature"><strong>#ordinalize</strong>(io : IO, number : Int | String) : Nil</a>
+        
+          <div class="summary"><p>Given a number, return the number with the correct ordinal suffix.</p></div>
         
       </li>
     
@@ -263,6 +326,20 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#parameterize%28io%3AIO%2Ccontent%3AString%2Cseparator%3AString%7CNil%3D%22-%22%2Cpreserve_case%3ABool%3Dfalse%29%3ANil-instance-method" class="signature"><strong>#parameterize</strong>(io : IO, content : String, separator : String | Nil = <span class="s">&quot;-&quot;</span>, preserve_case : Bool = <span class="n">false</span>) : Nil</a>
+        
+          <div class="summary"><p>Convert the given string to a parameter-friendly version.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pluralize%28io%3AIO%2Cword%3AString%29%3ANil-instance-method" class="signature"><strong>#pluralize</strong>(io : IO, word : String) : Nil</a>
+        
+          <div class="summary"><p>Given an IO and a word, it appends the plural version of that word to the IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#pluralize%28word%3AString%29%3AString-instance-method" class="signature"><strong>#pluralize</strong>(word : String) : String</a>
         
           <div class="summary"><p>Given a word, return the plural version of that word.</p></div>
@@ -270,9 +347,23 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#singularize%28io%3AIO%2Cword%3AString%29%3ANil-instance-method" class="signature"><strong>#singularize</strong>(io : IO, word : String) : Nil</a>
+        
+          <div class="summary"><p>Given an IO and a word, it appends the singular version of that word to the IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#singularize%28word%3AString%29%3AString-instance-method" class="signature"><strong>#singularize</strong>(word : String) : String</a>
         
           <div class="summary"><p>Given a word, return the singular version of that word.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tableize%28io%3AIO%2Cclass_name%3AString%29%3ANil-instance-method" class="signature"><strong>#tableize</strong>(io : IO, class_name : String) : Nil</a>
+        
+          <div class="summary"><p>Convert a given class name to the database table name for that class.</p></div>
         
       </li>
     
@@ -291,9 +382,30 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#titleize%28io%3AIO%2Cword%3AString%2Ckeep_id_suffix%3ABool%3Dfalse%29%3ANil-instance-method" class="signature"><strong>#titleize</strong>(io : IO, word : String, keep_id_suffix : Bool = <span class="n">false</span>) : Nil</a>
+        
+          <div class="summary"><p>Convert a given word to the titleized version of that word, which generally means each word is capitalized.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#underscore%28io%3AIO%2Ccamel_cased_word%3AString%29%3ANil-instance-method" class="signature"><strong>#underscore</strong>(io : IO, camel_cased_word : String) : Nil</a>
+        
+          <div class="summary"><p>Convert a given camel-case word to the underscored version of that word.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#underscore%28camel_cased_word%3AString%29%3AString-instance-method" class="signature"><strong>#underscore</strong>(camel_cased_word : String) : String</a>
         
           <div class="summary"><p>Convert a given camel-case word to the underscored version of that word.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#upcase_first%28io%3AIO%2Cstring%3AString%29%3ANil-instance-method" class="signature"><strong>#upcase_first</strong>(io : IO, string : String) : Nil</a>
+        
+          <div class="summary"><p>Capitalize the first letter of a given word.</p></div>
         
       </li>
     
@@ -348,7 +460,58 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="camelize(io:IO,term:String,uppercase_first_letter:Bool=true):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>camelize</strong>(io : IO, term : String, uppercase_first_letter : Bool = <span class="n">true</span>) : Nil
+
+        <a class="method-permalink" href="#camelize%28io%3AIO%2Cterm%3AString%2Cuppercase_first_letter%3ABool%3Dtrue%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Convert a given word to the camel-case version of that word.</p>
+<p>Optionally, a second parameter can be provided that controls whether or not the first letter is capitalized.</p>
+<p>Examples:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.camelize(<span class="s">&quot;application_controller&quot;</span>)                                <span class="c"># =&gt; &quot;ApplicationController&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.camelize(<span class="s">&quot;application_controller&quot;</span>, uppercase_first_letter: <span class="n">false</span>) <span class="c"># =&gt; &quot;applicationController&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L82" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="classify(io:IO,table_name:String|Symbol):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>classify</strong>(io : IO, table_name : String | Symbol) : Nil
+
+        <a class="method-permalink" href="#classify%28io%3AIO%2Ctable_name%3AString%7CSymbol%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Convert a given table name to the class name for that table.</p>
+<p>Examples:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.classify(<span class="s">&quot;users&quot;</span>)               <span class="c"># =&gt; &quot;User&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.classify(<span class="s">&quot;people&quot;</span>)              <span class="c"># =&gt; &quot;Person&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.classify(<span class="s">&quot;schema.users&quot;</span>)        <span class="c"># =&gt; &quot;User&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.classify(<span class="s">&quot;schema.public.users&quot;</span>) <span class="c"># =&gt; &quot;User&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L215" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -374,7 +537,30 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L155" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L209" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dasherize(io:IO,underscored_word:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>dasherize</strong>(io : IO, underscored_word : String) : Nil
+
+        <a class="method-permalink" href="#dasherize%28io%3AIO%2Cunderscored_word%3AString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Convert a given underscore-separated word to the same word, separated by dashes.</p>
+<p>Example:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.dasherize(<span class="s">&quot;post_office&quot;</span>) <span class="c"># =&gt; &quot;post-office&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L230" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -397,7 +583,30 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L166" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L225" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="deconstantize(io:IO,path:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>deconstantize</strong>(io : IO, path : String) : Nil
+
+        <a class="method-permalink" href="#deconstantize%28io%3AIO%2Cpath%3AString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Remove any trailing constants from the provided path.</p>
+<p>Example:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.deconstantize(<span class="s">&quot;Helpers::Mixins::User::FREE_TIER_COMMENTS&quot;</span>) <span class="c"># =&gt; &quot;Helpers::Mixins::User&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L264" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -420,7 +629,30 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L190" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L259" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="demodulize(io:IO,path:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>demodulize</strong>(io : IO, path : String) : Nil
+
+        <a class="method-permalink" href="#demodulize%28io%3AIO%2Cpath%3AString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Remove leading modules from a provided class name path.</p>
+<p>Example:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.demodulize(<span class="s">&quot;Helpers::Mixins::User&quot;</span>) <span class="c"># =&gt; &quot;User&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L249" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -443,7 +675,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L176" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L240" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -466,7 +698,30 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L200" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L274" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="foreign_key(io:IO,class_name:String,separate_class_name_and_id_with_underscore:Bool=true):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>foreign_key</strong>(io : IO, class_name : String, separate_class_name_and_id_with_underscore : Bool = <span class="n">true</span>) : Nil
+
+        <a class="method-permalink" href="#foreign_key%28io%3AIO%2Cclass_name%3AString%2Cseparate_class_name_and_id_with_underscore%3ABool%3Dtrue%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Determine the foreign key representation of a given class name.</p>
+<p>Example:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.foreign_key(<span class="s">&quot;Person&quot;</span>) <span class="c"># =&gt; &quot;person_id&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L279" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -492,7 +747,33 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L86" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L120" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="humanize(io:IO,lower_case_and_underscored_word:String,capitalize:Bool=true,keep_id_suffix:Bool=false):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>humanize</strong>(io : IO, lower_case_and_underscored_word : String, capitalize : Bool = <span class="n">true</span>, keep_id_suffix : Bool = <span class="n">false</span>) : Nil
+
+        <a class="method-permalink" href="#humanize%28io%3AIO%2Clower_case_and_underscored_word%3AString%2Ccapitalize%3ABool%3Dtrue%2Ckeep_id_suffix%3ABool%3Dfalse%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Convert a given word to the human-friendly version of that word.</p>
+<p>Capitalization and whether or not to retain an <code>_id</code> suffix can be controlled with optional parameters.</p>
+<p>Examples:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.humanize(<span class="s">&quot;employee_id&quot;</span>)                       <span class="c"># =&gt; &quot;Employee&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.humanize(<span class="s">&quot;employee_id&quot;</span>, capitalize: <span class="n">false</span>)    <span class="c"># =&gt; &quot;employee&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.humanize(<span class="s">&quot;employee_id&quot;</span>, keep_id_suffix: <span class="n">true</span>) <span class="c"># =&gt; &quot;Employee id&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L148" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -513,7 +794,34 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/inflections.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/inflections.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ordinal(io:IO,number:Int|String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>ordinal</strong>(io : IO, number : Int | String) : Nil
+
+        <a class="method-permalink" href="#ordinal%28io%3AIO%2Cnumber%3AInt%7CString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Determine the ordinal suffix for a given number.</p>
+<p>Example:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinal(<span class="n">1</span>) <span class="c"># =&gt; &quot;st&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinal(<span class="n">2</span>) <span class="c"># =&gt; &quot;nd&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinal(<span class="n">3</span>) <span class="c"># =&gt; &quot;rd&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinal(<span class="n">4</span>) <span class="c"># =&gt; &quot;th&quot;</span></code></pre>
+<p><span class="flag orange">TODO</span>  This should only take an Int</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L309" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -540,7 +848,34 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L214" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L293" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ordinalize(io:IO,number:Int|String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>ordinalize</strong>(io : IO, number : Int | String) : Nil
+
+        <a class="method-permalink" href="#ordinalize%28io%3AIO%2Cnumber%3AInt%7CString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Given a number, return the number with the correct ordinal suffix.</p>
+<p>Example:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinalize(<span class="n">1</span>) <span class="c"># =&gt; &quot;1st&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinalize(<span class="n">2</span>) <span class="c"># =&gt; &quot;2nd&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinalize(<span class="n">3</span>) <span class="c"># =&gt; &quot;3rd&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.ordinalize(<span class="n">4</span>) <span class="c"># =&gt; &quot;4th&quot;</span></code></pre>
+<p><span class="flag orange">TODO</span>  This should only take an Int</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L328" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -567,7 +902,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L239" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L323" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -593,7 +928,59 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L253" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L342" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parameterize(io:IO,content:String,separator:String|Nil=&quot;-&quot;,preserve_case:Bool=false):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>parameterize</strong>(io : IO, content : String, separator : String | Nil = <span class="s">&quot;-&quot;</span>, preserve_case : Bool = <span class="n">false</span>) : Nil
+
+        <a class="method-permalink" href="#parameterize%28io%3AIO%2Ccontent%3AString%2Cseparator%3AString%7CNil%3D%22-%22%2Cpreserve_case%3ABool%3Dfalse%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Convert the given string to a parameter-friendly version.</p>
+<p>The used separator and whether or not to preserve the original object case can be controlled through optional parameters.</p>
+<p>Examples:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.parameterize(<span class="s">&quot;Admin/product&quot;</span>)                       <span class="c"># =&gt; &quot;admin-product&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.parameterize(<span class="s">&quot;Admin::Product&quot;</span>, separator: <span class="s">&quot;_&quot;</span>)      <span class="c"># =&gt; &quot;admin_product&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.parameterize(<span class="s">&quot;Admin::Product&quot;</span>, preserve_case: <span class="n">true</span>) <span class="c"># =&gt; &quot;Admin-Product&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L363" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pluralize(io:IO,word:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>pluralize</strong>(io : IO, word : String) : Nil
+
+        <a class="method-permalink" href="#pluralize%28io%3AIO%2Cword%3AString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Given an IO and a word, it appends the plural version of that word
+to the IO.</p>
+<p>Example:</p>
+<pre><code class="language-crystal">io <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.new
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.pluralize(io, <span class="s">&quot;person&quot;</span>)
+io.to_s <span class="c"># =&gt; &quot;people&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -618,7 +1005,33 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="singularize(io:IO,word:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>singularize</strong>(io : IO, word : String) : Nil
+
+        <a class="method-permalink" href="#singularize%28io%3AIO%2Cword%3AString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Given an IO and a word, it appends the singular version of that word
+to the IO.</p>
+<p>Example:</p>
+<pre><code class="language-crystal">io <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.new
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.singularize(io, <span class="s">&quot;people&quot;</span>)
+io.to_s <span class="c"># =&gt; &quot;person&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -643,7 +1056,31 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tableize(io:IO,class_name:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>tableize</strong>(io : IO, class_name : String) : Nil
+
+        <a class="method-permalink" href="#tableize%28io%3AIO%2Cclass_name%3AString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Convert a given class name to the database table name for that class.</p>
+<p>Examples:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.tableize(<span class="s">&quot;User&quot;</span>)   <span class="c"># =&gt; &quot;users&quot;</span>
+<span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.tableize(<span class="s">&quot;Person&quot;</span>) <span class="c"># =&gt; &quot;people&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L196" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -667,7 +1104,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L142" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L191" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -690,7 +1127,53 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L129" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L173" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="titleize(io:IO,word:String,keep_id_suffix:Bool=false):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>titleize</strong>(io : IO, word : String, keep_id_suffix : Bool = <span class="n">false</span>) : Nil
+
+        <a class="method-permalink" href="#titleize%28io%3AIO%2Cword%3AString%2Ckeep_id_suffix%3ABool%3Dfalse%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Convert a given word to the titleized version of that word, which generally means each word is capitalized.</p>
+<p>Example:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.titleize(<span class="s">&quot;amazon web services&quot;</span>) <span class="c"># =&gt; &quot;Amazon Web Services&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L180" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="underscore(io:IO,camel_cased_word:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>underscore</strong>(io : IO, camel_cased_word : String) : Nil
+
+        <a class="method-permalink" href="#underscore%28io%3AIO%2Ccamel_cased_word%3AString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Convert a given camel-case word to the underscored version of that word.</p>
+<p>Example:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.underscore(<span class="s">&quot;ApplicationController&quot;</span>) <span class="c"># =&gt; &quot;application_controller&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L106" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -713,7 +1196,30 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L63" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L92" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="upcase_first(io:IO,string:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>upcase_first</strong>(io : IO, string : String) : Nil
+
+        <a class="method-permalink" href="#upcase_first%28io%3AIO%2Cstring%3AString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Capitalize the first letter of a given word.</p>
+<p>Example:</p>
+<pre><code class="language-crystal"><span class="t">Wordsmith</span><span class="t">::</span><span class="t">Inflector</span>.upcase_first(<span class="s">&quot;lucky&quot;</span>) <span class="c"># =&gt; &quot;Lucky&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L163" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -736,7 +1242,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/luckyframework/wordsmith/blob/88b79b3cb7b16451f07f6f175165d508865f014b/src/wordsmith/inflector/methods.cr#L119" target="_blank">View source</a>]
+          [<a href="https://github.com/luckyframework/wordsmith/blob/4d3ff374a6384640e5248797bbf1dd8ba8b52ca6/src/wordsmith/inflector/methods.cr#L158" target="_blank">View source</a>]
         
       </div>
     </div>
