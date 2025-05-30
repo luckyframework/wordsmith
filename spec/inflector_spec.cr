@@ -24,6 +24,12 @@ describe Wordsmith::Inflector do
       Wordsmith::Inflector.pluralize("").should eq ""
     end
 
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.pluralize(io, "thing")
+      io.to_s.should eq("things")
+    end
+
     SingularToPlural.each do |_singular, plural|
       it "should pluralize #{plural}" do
         Wordsmith::Inflector.pluralize(plural).should eq plural
@@ -57,6 +63,12 @@ describe Wordsmith::Inflector do
       Wordsmith::Inflector.inflections.singular("persons", "person")
       Wordsmith::Inflector.singularize("persons").should eq("person")
     end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.singularize(io, "things")
+      io.to_s.should eq("thing")
+    end
   end
 
   describe "camelize" do
@@ -77,6 +89,12 @@ describe Wordsmith::Inflector do
 
     it "test camelize with underscores" do
       Wordsmith::Inflector.camelize("Camel_Case").should eq "CamelCase"
+    end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.camelize(io, "Camel_Case")
+      io.to_s.should eq "CamelCase"
     end
   end
 
@@ -104,6 +122,12 @@ describe Wordsmith::Inflector do
         Wordsmith::Inflector.underscore(camel).should eq underscore
       end
     end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.underscore(io, "CamelCase")
+      io.to_s.should eq "camel_case"
+    end
   end
 
   describe "humanize" do
@@ -124,6 +148,12 @@ describe Wordsmith::Inflector do
         Wordsmith::Inflector.humanize(underscore, keep_id_suffix: true).should eq human
       end
     end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.humanize(io, "employee_salary")
+      io.to_s.should eq "Employee salary"
+    end
   end
 
   describe "upcase_first" do
@@ -137,6 +167,12 @@ describe Wordsmith::Inflector do
       tests.each do |from, to|
         Wordsmith::Inflector.upcase_first(from).should eq to
       end
+    end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.upcase_first(io, "hello world")
+      io.to_s.should eq "Hello world"
     end
   end
 
@@ -152,6 +188,12 @@ describe Wordsmith::Inflector do
         Wordsmith::Inflector.titleize(before, keep_id_suffix: true).should eq titleized
       end
     end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.titleize(io, "active_record")
+      io.to_s.should eq "Active Record"
+    end
   end
 
   describe "tableize" do
@@ -159,6 +201,12 @@ describe Wordsmith::Inflector do
       it "should tableize #{class_name}" do
         Wordsmith::Inflector.tableize(class_name).should eq table_name
       end
+    end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.tableize(io, "PrimarySpokesman")
+      io.to_s.should eq "primary_spokesmen"
     end
   end
 
@@ -177,6 +225,12 @@ describe Wordsmith::Inflector do
     it "should classify with leading schema name" do
       Wordsmith::Inflector.classify("schema.foo_bar").should eq "FooBar"
     end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.classify(io, :foo_bars)
+      io.to_s.should eq "FooBar"
+    end
   end
 
   describe "dasherize" do
@@ -190,6 +244,12 @@ describe Wordsmith::Inflector do
       it "should underscore as reverse of dasherize #{underscored}" do
         Wordsmith::Inflector.underscore(Wordsmith::Inflector.dasherize(underscored)).should eq underscored
       end
+    end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.dasherize(io, "street_address")
+      io.to_s.should eq "street-address"
     end
   end
 
@@ -205,6 +265,12 @@ describe Wordsmith::Inflector do
       it "should demodulize #{from}" do
         Wordsmith::Inflector.demodulize(from).should eq to
       end
+    end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.demodulize(io, "MyApplication::Billing::Account")
+      io.to_s.should eq "Account"
     end
   end
 
@@ -224,6 +290,12 @@ describe Wordsmith::Inflector do
         Wordsmith::Inflector.deconstantize(from).should eq to
       end
     end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.deconstantize(io, "MyApplication::Billing::Account")
+      io.to_s.should eq "MyApplication::Billing"
+    end
   end
 
   describe "foreign_key" do
@@ -238,6 +310,12 @@ describe Wordsmith::Inflector do
         Wordsmith::Inflector.foreign_key(klass, false).should eq foreign_key
       end
     end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.foreign_key(io, "Person")
+      io.to_s.should eq "person_id"
+    end
   end
 
   describe "ordinal" do
@@ -246,6 +324,12 @@ describe Wordsmith::Inflector do
         (number + Wordsmith::Inflector.ordinal(number)).should eq ordinalized
       end
     end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.ordinal(io, 4)
+      io.to_s.should eq "th"
+    end
   end
 
   describe "ordinalize" do
@@ -253,6 +337,12 @@ describe Wordsmith::Inflector do
       it "should ordinalize #{number}" do
         Wordsmith::Inflector.ordinalize(number).should eq ordinalized
       end
+    end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.ordinalize(io, 4)
+      io.to_s.should eq "4th"
     end
   end
 
@@ -268,6 +358,12 @@ describe Wordsmith::Inflector do
         Wordsmith::Inflector.parameterize(before, "_", true).should eq parameterized
         Wordsmith::Inflector.parameterize(before, "_").should eq parameterized.downcase
       end
+    end
+
+    it "takes an IO overload" do
+      io = IO::Memory.new
+      Wordsmith::Inflector.parameterize(io, "Admin::Product")
+      io.to_s.should eq "admin-product"
     end
   end
 

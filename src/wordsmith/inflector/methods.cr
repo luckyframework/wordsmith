@@ -16,6 +16,18 @@ module Wordsmith
       apply_inflections(word, inflections.plurals)
     end
 
+    # Given an IO and a word, it appends the plural version of that word
+    # to the IO.
+    #
+    # Example:
+    # ```
+    # io = IO::Memory.new
+    # Wordsmith::Inflector.pluralize(io, "person")
+    # io.to_s # => "people"
+    def pluralize(io : IO, word : String) : Nil
+      apply_inflections(io, word, inflections.plurals)
+    end
+
     # Given a word, return the singular version of that word.
     #
     # Example:
@@ -26,6 +38,18 @@ module Wordsmith
     # ```
     def singularize(word : String) : String
       apply_inflections(word, inflections.singulars)
+    end
+
+    # Given an IO and a word, it appends the singular version of that word
+    # to the IO.
+    #
+    # Example:
+    # ```
+    # io = IO::Memory.new
+    # Wordsmith::Inflector.singularize(io, "people")
+    # io.to_s # => "person"
+    def singularize(io : IO, word : String) : Nil
+      apply_inflections(io, word, inflections.singulars)
     end
 
     # Convert a given word to the camel-case version of that word.
@@ -54,6 +78,11 @@ module Wordsmith
       string
     end
 
+    # :ditto:
+    def camelize(io : IO, term : String, uppercase_first_letter : Bool = true) : Nil
+      io << camelize(term, uppercase_first_letter)
+    end
+
     # Convert a given camel-case word to the underscored version of that word.
     #
     # Example:
@@ -71,6 +100,11 @@ module Wordsmith
       word = word.tr("-", "_")
       word = word.downcase
       word
+    end
+
+    # :ditto:
+    def underscore(io : IO, camel_cased_word : String) : Nil
+      io << underscore(camel_cased_word)
     end
 
     # Convert a given word to the human-friendly version of that word.
@@ -110,6 +144,11 @@ module Wordsmith
       result
     end
 
+    # :ditto:
+    def humanize(io : IO, lower_case_and_underscored_word : String, capitalize : Bool = true, keep_id_suffix : Bool = false) : Nil
+      io << humanize(lower_case_and_underscored_word, capitalize, keep_id_suffix)
+    end
+
     # Capitalize the first letter of a given word.
     #
     # Example:
@@ -118,6 +157,11 @@ module Wordsmith
     # ```
     def upcase_first(string : String) : String
       string.size > 0 ? string[0].upcase + string[1..-1] : ""
+    end
+
+    # :ditto:
+    def upcase_first(io : IO, string : String) : Nil
+      io << upcase_first(string)
     end
 
     # Convert a given word to the titleized version of that word, which generally means each word is capitalized.
@@ -132,6 +176,11 @@ module Wordsmith
       end
     end
 
+    # :ditto:
+    def titleize(io : IO, word : String, keep_id_suffix : Bool = false) : Nil
+      io << titleize(word, keep_id_suffix)
+    end
+
     # Convert a given class name to the database table name for that class.
     #
     # Examples:
@@ -141,6 +190,11 @@ module Wordsmith
     # ```
     def tableize(class_name : String) : String
       pluralize(underscore(class_name))
+    end
+
+    # :ditto:
+    def tableize(io : IO, class_name : String) : Nil
+      io << tableize(class_name)
     end
 
     # Convert a given table name to the class name for that table.
@@ -157,6 +211,11 @@ module Wordsmith
       camelize(singularize(table_name.to_s.sub(/.*\./, "")))
     end
 
+    # :ditto:
+    def classify(io : IO, table_name : String | Symbol) : Nil
+      io << classify(table_name)
+    end
+
     # Convert a given underscore-separated word to the same word, separated by dashes.
     #
     # Example:
@@ -165,6 +224,11 @@ module Wordsmith
     # ```
     def dasherize(underscored_word : String) : String
       underscored_word.tr("_", "-")
+    end
+
+    # :ditto:
+    def dasherize(io : IO, underscored_word : String) : Nil
+      io << dasherize(underscored_word)
     end
 
     # Remove leading modules from a provided class name path.
@@ -181,6 +245,11 @@ module Wordsmith
       end
     end
 
+    # :ditto:
+    def demodulize(io : IO, path : String) : Nil
+      io << demodulize(path)
+    end
+
     # Remove any trailing constants from the provided path.
     #
     # Example:
@@ -191,6 +260,11 @@ module Wordsmith
       path[0, path.rindex("::") || 0] # implementation based on the one in facets' Module#spacename
     end
 
+    # :ditto:
+    def deconstantize(io : IO, path : String) : Nil
+      io << deconstantize(path)
+    end
+
     # Determine the foreign key representation of a given class name.
     #
     # Example:
@@ -199,6 +273,11 @@ module Wordsmith
     # ```
     def foreign_key(class_name : String, separate_class_name_and_id_with_underscore : Bool = true) : String
       underscore(demodulize(class_name)) + (separate_class_name_and_id_with_underscore ? "_id" : "id")
+    end
+
+    # :ditto:
+    def foreign_key(io : IO, class_name : String, separate_class_name_and_id_with_underscore : Bool = true) : Nil
+      io << foreign_key(class_name, separate_class_name_and_id_with_underscore)
     end
 
     # Determine the ordinal suffix for a given number.
@@ -226,6 +305,11 @@ module Wordsmith
       end
     end
 
+    # :ditto:
+    def ordinal(io : IO, number : Int | String) : Nil
+      io << ordinal(number)
+    end
+
     # Given a number, return the number with the correct ordinal suffix.
     #
     # Example:
@@ -238,6 +322,11 @@ module Wordsmith
     # TODO: This should only take an Int
     def ordinalize(number : Int | String) : String
       "#{number}#{ordinal(number)}"
+    end
+
+    # :ditto:
+    def ordinalize(io : IO, number : Int | String) : Nil
+      io << ordinalize(number)
     end
 
     # Convert the given string to a parameter-friendly version.
@@ -270,6 +359,11 @@ module Wordsmith
       parameterized_string
     end
 
+    # :ditto:
+    def parameterize(io : IO, content : String, separator : String? = "-", preserve_case : Bool = false) : Nil
+      io << parameterize(content, separator, preserve_case)
+    end
+
     # Apply the previously-defined inflection rules to a given word.
     private def apply_inflections(word : String, rules : Enumerable) : String
       result = word.dup
@@ -285,6 +379,10 @@ module Wordsmith
         }
         result
       end
+    end
+
+    private def apply_inflections(io : IO, word : String, rules : Enumerable) : Nil
+      io << apply_inflections(word, rules)
     end
   end
 end
