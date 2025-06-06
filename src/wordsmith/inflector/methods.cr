@@ -99,7 +99,7 @@ module Wordsmith
         .gsub(/([a-z\d])([A-Z])/, "\\1_\\2")
         .tr("-", "_")
         .downcase
-    
+
       word
     end
 
@@ -129,7 +129,6 @@ module Wordsmith
       result = result.sub(/\A_+/, "")
       result = result.sub(/_id\z/, "") unless keep_id_suffix
       result = result.tr("_", " ")
-
 
       result = result.gsub(/\b[a-z\d]+\b/i) do |match|
         inflections.acronyms[match.downcase]? || match.downcase
@@ -334,23 +333,16 @@ module Wordsmith
     # Wordsmith::Inflector.parameterize("Admin::Product", preserve_case: true) # => "Admin-Product"
     # ```
     def parameterize(content : String, separator : String? = "-", preserve_case : Bool = false) : String
-      parameterized_string = content.gsub(/[^a-z0-9\-_]+/i, separator)
+      sep = separator || "-"
+      str = content.gsub(/[^a-z0-9\-_]+/i, sep)
 
-      unless separator.nil? || separator.empty?
-        if separator == "-"
-          re_duplicate_separator = /-{2,}/
-          re_leading_trailing_separator = /^-|-$/i
-        else
-          re_sep = Regex.escape(separator)
-          re_duplicate_separator = /#{re_sep}{2,}/
-          re_leading_trailing_separator = /^#{re_sep}|#{re_sep}$/i
-        end
-        parameterized_string = parameterized_string.gsub(re_duplicate_separator, separator)
-        parameterized_string = parameterized_string.gsub(re_leading_trailing_separator, "")
+      unless sep.empty?
+        re_sep = Regex.escape(sep)
+        str = str.gsub(/#{re_sep}{2,}/, sep)
+        str = str.gsub(/^#{re_sep}|#{re_sep}$/, "")
       end
 
-      parameterized_string = parameterized_string.downcase unless preserve_case
-      parameterized_string
+      preserve_case ? str : str.downcase
     end
 
     # :ditto:
