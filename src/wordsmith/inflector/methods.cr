@@ -349,19 +349,16 @@ module Wordsmith
 
     # Apply the previously-defined inflection rules to a given word.
     private def apply_inflections(word : String, rules : Enumerable) : String
-      result = word.dup
+      return word if word.empty? || inflections.uncountables.uncountable?(word)
 
-      if result.empty? || inflections.uncountables.uncountable?(result)
-        result
-      else
-        rules.to_a.reverse.each { |rule, replacement|
-          if result.index(rule)
-            result = result.sub(rule, replacement)
-            break
-          end
-        }
-        result
+      result = word
+      rules.to_a.reverse_each do |rule, replacement|
+        if result.index(rule)
+          result = result.sub(rule, replacement)
+          break
+        end
       end
+      result
     end
 
     private def apply_inflections(io : IO, word : String, rules : Enumerable) : Nil
