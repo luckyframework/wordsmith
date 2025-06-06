@@ -63,19 +63,16 @@ module Wordsmith
     # ```
     def camelize(term : String, uppercase_first_letter : Bool = true) : String
       string = if uppercase_first_letter
-                 term.sub(/^[a-z\d]*/) do |match|
-                   inflections.acronyms[match]? || match.capitalize
-                 end
+                 term.sub(/^[a-z\d]*/) { |match| inflections.acronyms[match]? || match.capitalize }
                else
-                 term.sub(/^(?:#{inflections.acronym_regex}(?=\b|[A-Z_])|\w)/) do |match|
-                   match.downcase
-                 end
+                 term.sub(/^(?:#{inflections.acronym_regex}(?=\b|[A-Z_])|\w)/) { |match| match.downcase }
                end
+
       string = string.gsub(/(?:_|(\/))([a-z\d]*)/i) do |_string, match|
         "#{match[1]?}#{inflections.acronyms[match[2]]? || match[2].capitalize}"
       end
-      string = string.gsub("/", "::")
-      string
+
+      string.gsub("/", "::")
     end
 
     # :ditto:
