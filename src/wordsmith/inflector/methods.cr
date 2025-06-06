@@ -121,28 +121,21 @@ module Wordsmith
     def humanize(lower_case_and_underscored_word : String, capitalize : Bool = true, keep_id_suffix : Bool = false) : String
       result = lower_case_and_underscored_word.dup
 
-      inflections.humans.each { |rule, replacement|
-        if result.index(rule)
-          result = result.sub(rule, replacement)
-          break
-        end
-      }
+      if rule_tuple = inflections.humans.find { |rule, _| result.index(rule) }
+        rule, replacement = rule_tuple
+        result = result.sub(rule, replacement)
+      end
 
       result = result.sub(/\A_+/, "")
-      unless keep_id_suffix
-        result = result.sub(/_id\z/, "")
-      end
+      result = result.sub(/_id\z/, "") unless keep_id_suffix
       result = result.tr("_", " ")
 
-      result = result.gsub(/([a-z\d]*)/i) do |match|
-        "#{inflections.acronyms[match.downcase]? || match.downcase}"
+
+      result = result.gsub(/\b[a-z\d]+\b/i) do |match|
+        inflections.acronyms[match.downcase]? || match.downcase
       end
 
-      if capitalize
-        result = result.sub(/\A\w/, &.upcase)
-      end
-
-      result
+      capitalize ? result.sub(/\A\w/, &.upcase) : result
     end
 
     # :ditto:
