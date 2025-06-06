@@ -10,7 +10,7 @@ jobs:
       image: crystallang/crystal:latest-alpine
     steps:
       - name: Cache shards
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.cache/shards
           key: ${{ runner.os }}-shards-${{ hashFiles('shard.yml') }}
