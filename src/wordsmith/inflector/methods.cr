@@ -92,13 +92,14 @@ module Wordsmith
     def underscore(camel_cased_word : String) : String
       return camel_cased_word unless camel_cased_word =~ /[A-Z-]|::/
       word = camel_cased_word.gsub("::", "/")
-      word = word.gsub(/(?:(?<=([A-Za-z\d]))|\b)(#{inflections.acronym_regex})(?=\b|[^a-z])/) do |_string, match|
-        "#{match[1]? && "_"}#{match[2].downcase}"
-      end
-      word = word.gsub(/([A-Z\d]+)([A-Z][a-z])/, "\\1_\\2")
-      word = word.gsub(/([a-z\d])([A-Z])/, "\\1_\\2")
-      word = word.tr("-", "_")
-      word = word.downcase
+        .gsub(/(?:(?<=([A-Za-z\d]))|\b)(#{inflections.acronym_regex})(?=\b|[^a-z])/) do |_string, match|
+          "#{match[1]? && "_"}#{match[2].downcase}"
+        end
+        .gsub(/([A-Z\d]+)([A-Z][a-z])/, "\\1_\\2")
+        .gsub(/([a-z\d])([A-Z])/, "\\1_\\2")
+        .tr("-", "_")
+        .downcase
+    
       word
     end
 
